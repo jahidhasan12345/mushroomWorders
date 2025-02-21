@@ -1,667 +1,567 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mushroom Wonders</title>
-    <style>
-/* সম্পূর্ণ ওয়েবসাইটের ব্যাকগ্রাউন্ড ডিজাইন */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #e3f2fd, #ffffff); /* হালকা নীল + সাদা গ্রেডিয়েন্ট */
-    color: #333;
-    line-height: 1.6;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mushroom Wonders</title>
+  <style>
+    /* Overall Background & Container */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #e3f2fd, #ffffff);
+      color: #333;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Thank You Heading */
+    .thank-you-heading {
+      font-family: 'Poppins', sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .thank-you-heading a {
+      color: #FF6600;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .thank-you-heading a:hover {
+      color: #D35400;
+    }
+
+    /* Storage Section Box */
+    .storage-section {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      max-width: 850px;
+      margin: 20px auto;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    .storage-section h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+    .storage-section ul {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+    }
+    .storage-section ul li {
+      background: #f8f9fa;
+      padding: 10px;
+      margin-bottom: 8px;
+      border-radius: 5px;
+      border-left: 4px solid #007bff;
+      font-size: 1rem;
+    }
+    .storage-section .details {
+      display: none;
+      padding: 10px;
+      margin-top: 5px;
+      background: #f9f9f9;
+      text-align: left;
+    }
+    .storage-section .toggle-btn {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      float: right;
+      margin-top: -40px;
+    }
+    .storage-section .toggle-btn:hover {
+      background-color: #0056b3;
+    }
+
+    /* Feature Section (Mushroom Features) Box */
+    .feature-box {
+      background-color: #f4f9f5; /* soft greenish background */
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      padding: 20px;
+      text-align: left;
+      max-width: 500px;
+      margin: 20px auto;
+    }
+    .feature-box h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .feature-box ul {
+      list-style: none;
+      padding: 0;
+    }
+    .feature-box ul li {
+      margin-bottom: 10px;
+      padding-left: 10px;
+      color: #333;
+      font-size: 1rem;
+    }
+    .feature-box .hidden-content {
+      display: none;
+    }
+    .feature-box .show-btn {
+      margin-top: 15px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+      display: block;
+      width: 28%;
+      text-align: center;
+      font-size: 15px;
+      border-radius: 5px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .feature-box .show-btn:hover {
+      background-color: #0056b3;
+    }
+
+    /* Recipe Section (Mushroom Recipes) */
+    .card {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin: 20px auto;
+      padding: 20px;
+      text-align: center;
+      max-width: 600px;
+    }
+    .card h2 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    .card ul {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+    }
+    .card ul li {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #555;
+    }
+    .card p {
+      font-size: 1.1rem;
+      margin-top: 10px;
+      color: #555;
+    }
+    .card .link a {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 15px;
+      display: inline-block;
+    }
+    .card .link a:hover {
+      background-color: #0056b3;
+    }
+
+    /* Recipe Section with Toggle Buttons */
+    .recipe-section {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 800px;
+      margin: 30px auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .recipe-section h2 {
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    .recipe-section p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 15px;
+    }
+    .recipe-box {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 15px;
+      padding: 15px;
+      text-align: left;
+      font-size: 14px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+    .recipe-box h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #333;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .recipe-box ul {
+      list-style: none;
+      padding: 0;
+    }
+    .recipe-box ul li {
+      font-size: 1rem;
+      margin-bottom: 5px;
+      color: #555;
+    }
+    .recipe-box p {
+      font-size: 1rem;
+      margin-top: 10px;
+      color: #555;
+    }
+    .recipe-box .toggle-button {
+      background-color: #007bff;
+      color: white;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-left: 10px;
+    }
+    .recipe-box .toggle-button:hover {
+      background-color: #0056b3;
+    }
+    .recipe-box .recipe-content {
+      display: none;
+      margin-top: 10px;
+    }
+    .recipe-box .recipe-content.active {
+      display: block;
+    }
+    .recipe-box .recipe-content ul,
+    .recipe-box .recipe-content p {
+      text-align: left;
+      color: #555;
+      font-size: 0.95rem;
+    }
+
+    /* Order Section */
+    .order-section {
+      background-color: #f4f8fc;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+      width: 80%;
+      margin: 20px auto;
+    }
+    .order-section h2 {
+      color: #0073e6;
+      font-size: 22px;
+    }
+    .order-section p {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 15px;
+    }
+    .order-links {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    .order-btn {
+      background-color: #0073e6;
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .order-btn:hover {
+      background-color: #005bb5;
+    }
+    
+    /* Font Standardization for Full Website */
+    h1, h2, h3 {
+      font-family: 'Noto Sans Bengali', 'Poppins', sans-serif;
+      font-weight: 600;
+      color: #222;
+    }
+    ul, ol {
+      font-family: 'Noto Sans Bengali', 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      color: #333;
+    }
+    p, span {
+      font-family: 'Noto Sans Bengali', 'Roboto', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      color: #444;
+      line-height: 1.6;
+    }
+    body {
+  /* Base gradient background */
+  background: linear-gradient(159deg, rgba(34,139,34,1) 0%, rgba(50,205,50,1) 100%);
+  /* Overlay background image */
+  background-image: url('https://images.unsplash.com/photo-1611281404780-95799250d540?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  color: #fefefe; /* Light text for contrast */
+  z-index: 1;
 }
 
-/* সব কনটেন্টের কন্টেইনার */
-.container {
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 20px;
-    text-align: center;
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  opacity: 0.3;
+  z-index: -1;
+  mix-blend-mode: multiply;
+  filter: blur(4px); /* Adjust blur level as needed */
 }
 
-/* পুরো সংরক্ষণ বক্স */
-.storage-section {
-    background: #ffffff; /* আলাদা ব্যাকগ্রাউন্ড */
-    padding: 20px;
-    border-radius: 10px; /* গোল কোণা */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* সুন্দর শ্যাডো */
-    max-width: 850px; /* ফুল সাইজ না, একটু ছোট */
-    margin: 20px auto; /* সেন্টারে রাখা */
-    border: 1px solid #ddd;
-}
-
-/* প্রতিটি শিরোনাম */
-.storage-section h2 {
-    text-align: center;
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-}
-
-/* তালিকার ডিজাইন */
-.storage-section ul {
-    list-style: none; /* ডিফল্ট ডট রিমুভ */
-    padding: 0;
-    text-align: left; /* বাম পাশে লেখা সাজানো */
-}
-
-.storage-section ul li {
-    background: #f8f9fa; /* হালকা গ্রে ব্যাকগ্রাউন্ড */
-    padding: 10px;
-    margin-bottom: 8px;
-    border-radius: 5px;
-    border-left: 4px solid #007bff; /* নীল বর্ডার */
-    font-size: 1rem;
-}
-
-/* বিস্তারিত অংশ */
-.details {
-    display: none;
-    padding: 10px;
-    margin-top: 5px;
-    background: #f9f9f9; /* হালকা ধূসর ব্যাকগ্রাউন্ড */
-    box-shadow: none; /* শ্যাডো পুরোপুরি সরিয়ে দেওয়া হয়েছে */
-    text-align: left; /* লেখা পুরোপুরি বাঁ দিকে নিয়ে যাওয়া হয়েছে */
-}
-
-
-/* বোতামের ডিজাইন */
-.toggle-btn {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    float: right; /* বোতাম ডান পাশে সরানো */
-}
-
-.toggle-btn:hover {
-    background-color: #0056b3;
-}
-
-/* বিস্তারিত অংশ */
-.details {
-    display: none;
-    padding: 10px;
-    margin-top: 5px;
-    background: #f9f9f9; /* হালকা ধূসর ব্যাকগ্রাউন্ড */
-    box-shadow: none; /* শ্যাডো পুরোপুরি সরিয়ে দেওয়া হয়েছে */
-    text-align: left; /* লেখা পুরোপুরি বাঁ দিকে নিয়ে যাওয়া হয়েছে */
-}
-.feature-section ul {
-    list-style-type: none; /* বুলেট পয়েন্ট বাদ দিন */
-    padding-left: 20px; /* বুলেট পয়েন্টের জন্য স্পেস তৈরি */
-}
-
-.feature-section li {
-    position: relative;
-    margin-bottom: 10px;
-}
-
-.feature-section .bullet {
-    position: absolute;
-    left: -20px;
-    color: #007bff; /* বুলেটের জন্য নীল কালার */
-    font-size: 20px;
-}
-
-.feature-section li {
-    color: #333; /* টেক্সটের কালার পরিবর্তন করুন */
-    font-size: 16px; /* টেক্সট সাইজ পরিবর্তন করুন */
-}
-
-.hidden-content {
-    display: none;
-}
-
-.show-btn {
-    margin-top: 15px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-}
-
-.show-btn:hover {
-    background-color: #0056b3;
-}
-.feature-section-box {
-    background-color: #ffffff; /* সাদা ব্যাকগ্রাউন্ড */
-    border-radius: 10px; /* কোণার জন্য রাউন্ড */
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* শ্যাডো */
-    max-width: 800px;
-    margin: 20px auto;
-}
-
-.feature-section-box h2 {
-    font-size: 24px;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-.feature-section-box ul {
-    list-style-type: none; /* বুলেট পয়েন্ট সরানো */
-    padding-left: 0; /* প্যাডিং কেটে ফেলা */
-}
-
-.feature-section-box ul li {
-    margin-bottom: 10px;
-    padding-left: 10px; /* টেক্সটের সাথে একটু জায়গা রাখা */
-    color: #333; /* টেক্সটের রঙ */
-    font-size: 1rem;
-}
-
-
-.feature-section-box .hidden-content {
-    display: none;
-}
-
-.feature-section-box .show-btn {
-    margin-top: 15px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 8px 16px; /* কমিয়ে দেওয়া padding */
-    cursor: pointer;
-    display: block;
-    width: 28%; /* বাটনের প্রস্থ কমানো */
-    text-align: center;
-    font-size: 15px; /* বাটনের ফন্ট সাইজ ছোট করা */
-    border-radius: 5px; /* কোণার জন্য রাউন্ড */
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.feature-section-box .show-btn:hover {
-    background-color: #0056b3;
-}
-.card {
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    padding: 20px;
-    text-align: center;
-    width: 100%;
-    max-width: 600px; /* Adjust the width to your needs */
-    margin: 20px auto; /* Center the box */
-}
-
-.card h2 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-    color: #333;
-}
-
-.card ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.card ul li {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    text-align: left; /* Left-align text */
-}
-
-.card .link a {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 15px;
-    display: inline-block;
-}
-
-.card .link a:hover {
-    background-color: #0056b3;
-}
-
-
-.recipe-section {
-    background-color: #fff; /* White background */
-    padding: 20px;
-    border-radius: 12px;
-    width: 100%;
-    max-width: 800px;
-    margin: 30px auto;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Shadow for section */
-}
-
-.recipe-section h2 {
-    font-size: 1.6rem;
-    margin-bottom: 15px;
-    color: #333;
-}
-
-.recipe-section p {
-    font-size: 1rem;
-    color: #555;
-    margin-bottom: 15px;
-}
-
-.recipe-box {
-    background-color: #f8f9fa; /* হালকা ধূসর ব্যাকগ্রাউন্ড */
-    border: none; /* বর্ডার সরানো হলো */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow ঠিক রাখা হয়েছে */
-    margin-bottom: 15px;
-    padding: 15px;
-    text-align: left;
-    font-size: 14px; /* ফন্ট সাইজ ছোট করা হলো */
-    font-family: 'Poppins', sans-serif; /* সফট ও ক্লিন ফন্ট */
-    font-weight: 400; /* কম bold করা হলো */
-    line-height: 1.6; /* লাইন স্পেসিং ভালো করা হলো */
-}
-
-..recipe-box {
-    max-width: 600px; /* বক্সের প্রস্থ ঠিক রাখা হলো */
-    padding: 12px; /* প্যাডিং কমানো হলো */
-    font-size: 13px; /* ফন্ট সাইজ ছোট রাখা হলো */
-    line-height: 1.5; /* লাইন স্পেসিং ঠিক রাখা হলো */
-    height: auto; /* উচ্চতা স্বয়ংক্রিয়ভাবে টেক্সট অনুযায়ী হবে */
-    display: flex; 
-    flex-direction: column;
-    justify-content: center; /* কন্টেন্ট ঠিকভাবে বসানোর জন্য */
-}
-.recipe-box {
-    font-weight: 400; /* Regular font */
-}
-
-
-
-
-.recipe-box h3 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: #333;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.recipe-box ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.recipe-box ul li {
-    font-size: 1rem;
-    margin-bottom: 5px;
-    color: #555;
-}
-
-.recipe-box p {
-    font-size: 1rem;
-    margin-top: 10px;
-    color: #555;
-}
-
-.toggle-button {
-    background-color: #007bff;
-    color: white;
-    padding: 6px 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    margin-left: 10px;
-}
-
-.toggle-button:hover {
-    background-color: #0056b3;
-}
-
-.recipe-content {
-    display: none;
-    margin-top: 10px;
-}
-
-.recipe-content.active {
-    display: block;
-}
-
-.recipe-content ul, .recipe-content p {
-    text-align: left;
-    color: #555;
-    font-size: 0.95rem;
-}
-
-.order-section {
-    background-color: #f4f8fc; /* Light Contract Color */
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    margin: 20px auto;
-}
-
-.order-section h2 {
-    color: #0073e6;
-    font-size: 22px;
-}
-
-.order-section p {
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 15px;
-}
-
-.order-links {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.order-btn {
-    background-color: #0073e6;
-    color: white;
-    padding: 10px 15px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.order-btn:hover {
-    background-color: #005bb5;
-    /* ✅ Title Fonts (সব Title-এর জন্য) */
-/* ✅ Title Fonts (সব Title-এর জন্য) */
-h1, h2, h3 {
-    font-family: 'Noto Sans Bengali', 'Poppins', sans-serif;  /* বাংলা + ইংরেজি ফন্ট */
-    font-weight: 600; /* Semi-Bold */
-    color: #222; /* Dark Text */
-}
-
-/* ✅ Point Fonts (Bullet Points বা চেকলিস্টের জন্য) */
-ul, ol {
-    font-family: 'Noto Sans Bengali', 'Inter', sans-serif; /* বাংলা ও ইংরেজি সহজে পড়ার জন্য */
-    font-size: 16px;
-    font-weight: 500; /* Medium */
-    color: #333; 
-}
-
-/* ✅ Description Fonts (সাধারণ বর্ণনার জন্য) */
-p, span {
-    font-family: 'Noto Sans Bengali', 'Roboto', sans-serif; /* বাংলা + ইংরেজি Clean Look */
-    font-size: 15px;
-    font-weight: 400; /* Regular */
-    color: #444;
-    line-height: 1.6; /* Line Spacing */
-}
-
-}
-/* ✅ Mushroom Recipe Section Fonts */
-.recipe-section h2 {
-    font-family: 'Noto Sans Bengali', 'Poppins', sans-serif;
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: #222;
-}
-
-.recipe-section h3 {
-    font-family: 'Noto Sans Bengali', 'Poppins', sans-serif;
-    font-size: 1.4rem;
-    font-weight: 500;
-    color: #333;
-}
-
-.recipe-section p {
-    font-family: 'Noto Sans Bengali', 'Roboto', sans-serif;
-    font-size: 15px;
-    font-weight: 400;
-    color: #444;
-    line-height: 1.6;
-}
-
-.recipe-section ul {
-    font-family: 'Noto Sans Bengali', 'Inter', sans-serif;
-    font-size: 15px;
-    font-weight: 400;
-    color: #444;
-    line-height: 1.6;
-}
-
-.recipe-section button {
-    font-family: 'Noto Sans Bengali', 'Poppins', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-
-
-
-
-
-    </style>
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="thank-note">Thank you for choosing <strong><a href="https://www.facebook.com/share/1EFK7CzFay/">Mushroom Wonders!</a></strong> Your health is our priority.</div>
-
-        <div class="storage-section">
-            <div class="storage-section">
-                <h2>সংরক্ষণ পদ্ধতি</h2>
-            
-                <ul>
-                    <li>ফ্রিজে সংরক্ষণ (৩-৭ দিন)
-                        <button class="toggle-btn" onclick="toggleDetails('method1', this)">বিস্তারিত জানুন</button>
-                        <div class="details" id="method1">
-                            ✅ মাশরুম ধোয়া যাবে না (ধুলে নরম হয়ে যেতে পারে)।<br>
-                            ✅ একটি কাগজের ব্যাগ বা ছিদ্রযুক্ত পলিথিনে রেখে ফ্রিজের নিচের দিকে সংরক্ষণ করুন।<br>
-                            ✅ প্লাস্টিকের পাত্র বা সিল করা ব্যাগে রাখবেন না, এতে আর্দ্রতা জমে দ্রুত পচে যেতে পারে।<br>
-                            🛑 ভুল করবেন না: পলিথিনে রেখে মুখ বন্ধ করলে ব্যাকটেরিয়া দ্রুত জন্ম নেবে এবং মাশরুম নষ্ট হয়ে যাবে।
-                        </div>
-                    </li>
-            
-                    <li>ফ্রিজ ছাড়া সংরক্ষণ (১-২ দিন)
-                        <button class="toggle-btn" onclick="toggleDetails('method2', this)">বিস্তারিত জানুন</button>
-                        <div class="details" id="method2">
-                            ✅ মাশরুমগুলো ঠাণ্ডা, শুকনো ও বায়ু চলাচলযোগ্য স্থানে রাখুন।<br>
-                            ✅ কাপড়ের ব্যাগ বা খোলা ট্রেতে রাখলে ১-২ দিন ভালো থাকবে।<br>
-                            ✅ বেশি গরম বা সরাসরি রোদে রাখবেন না।<br>
-                            🛑 ভুল করবেন না: প্লাস্টিক বা বেশি বন্ধ জায়গায় রাখলে আর্দ্রতা বেড়ে দ্রুত নষ্ট হবে।
-                        </div>
-                    </li>
-            
-                    <li>ডিপ ফ্রিজে সংরক্ষণ (১-২ মাস)
-                        <button class="toggle-btn" onclick="toggleDetails('method3', this)">বিস্তারিত জানুন</button>
-                        <div class="details" id="method3">
-                            ✅ প্রথমে মাশরুমগুলো হালকা ভাপ (Blanching) দিয়ে নিন (২-৩ মিনিট গরম পানিতে রেখে ঠান্ডা করে নিন)।<br>
-                            ✅ তারপর বায়ুরোধী ব্যাগে রেখে ডিপ ফ্রিজে সংরক্ষণ করুন।<br>
-                            ✅ ব্যবহার করার আগে স্বাভাবিক তাপমাত্রায় আনুন।<br>
-                            🛑 ভুল করবেন না: কাঁচা মাশরুম সরাসরি ডিপ ফ্রিজে রাখলে গুণগত মান নষ্ট হয়ে যাবে।
-                        </div>
-                    </li>
-            
-                    <li>শুকিয়ে সংরক্ষণ (৬ মাস - ১ বছর)
-                        <button class="toggle-btn" onclick="toggleDetails('method4', this)">বিস্তারিত জানুন</button>
-                        <div class="details" id="method4">
-                            ✅ মাশরুম পাতলা করে কেটে রোদে শুকিয়ে নিন বা ওভেনে ৪৫-৫০°C তাপে ৫-৬ ঘণ্টা শুকান।<br>
-                            ✅ শুকনো মাশরুম এয়ারটাইট কাঁচের বয়ামে সংরক্ষণ করুন।<br>
-                            ✅ পরে রান্নার সময় পানিতে ভিজিয়ে ব্যবহার করতে পারবেন।<br>
-                            🛑 ভুল করবেন না: অর্ধেক শুকনো মাশরুম রেখে দিলে পচে যেতে পারে। পুরোপুরি শুকিয়ে নিতে হবে।
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            
- 
-            
-            <div class="feature-section-box">
-                <h2>আমাদের মাশরুমের বিশেষ বৈশিষ্ট্য</h2>
-                <ul>
-                    <li> আমাদের মাশরুম ১০০% অর্গানিক এবং স্বাস্থ্যকর।</li>
-                    <li> এতে প্রচুর পরিমাণে প্রোটিন, ভিটামিন ও মিনারেল রয়েছে।</li>
-                    <li> এটি ইমিউন সিস্টেমকে শক্তিশালী করতে সাহায্য করে।</li>
-                    <li> চাষের সময় কোন কেমিক্যাল ব্যবহার করা হয় না।</li>
-                </ul>
-            
-                <div id="hiddenContent" class="hidden-content">
-                    <ul>
-                        <li> মাশরুম খাদ্যনালী ভালো রাখতে সহায়ক।</li>
-                        <li> এটি কোলেস্টেরল কমাতে সাহায্য করে।</li>
-                        <li> উচ্চ রক্তচাপ কমাতে পারে এবং হার্টের জন্য উপকারী।</li>
-                    </ul>
-                </div>
-            
-                <button id="toggleBtn" class="show-btn">আরও দেখুন</button>
-            </div>
-            
-            
-            
-            
-
-            <div class="card">
-                <h2>মাশরুমে রন্ধন প্রণালী</h2>
-                <ul>
-                    <li>🍄 মাশরুমের ভর্তা</li>
-                    <li>🍄 মাশরুম ফ্রাই</li>
-                    <li>🍄 মাশরুম স্যুপ</li>
-                    <li>🍄 চিংড়ি মাশরুম</li>
-                    <li>🍄 মাশরুম নুডলস</li>
-                </ul>
-                <p>রান্নার ভিডিও দেখতে আমাদের ফেসবুক পেজে চোখ রাখুন।</p>
-                <div class="link">
-                    <a href="https://www.facebook.com/share/1EFK7CzFay/">Mushroom Wonders</a>
-                </div>
-            </div>
-            
-            <div class="recipe-section">
-                <h2>ডায়াবেটিস রোগীদের জন্য ওয়েস্টার মাশরুম রান্নার সহজ ও স্বাস্থ্যকর উপায়</h2>
-                <p>ওয়েস্টার মাশরুম এমনভাবে রান্না করতে হবে, যাতে এটির গুণাগুণ নষ্ট না হয় এবং রক্তে শর্করার ওপর ইতিবাচক প্রভাব ফেলে। নিচে চারটি স্বাস্থ্যকর রান্নার পদ্ধতি দেওয়া হলো—</p>
-            
-                <div class="recipe-box">
-                    <h3>১. ওয়েস্টার মাশরুম স্যুপ
-                        <button class="toggle-button" onclick="toggleRecipe('recipe1')">রান্নার পদ্ধতি</button>
-                    </h3>
-                    <div class="recipe-content" id="recipe1">
-                        <ul>
-                            <li>১ কাপ কুচানো ওয়েস্টার মাশরুম</li>
-                            <li>১ চা-চামচ অলিভ অয়েল বা সরিষার তেল</li>
-                            <li>১ কাপ পানি বা সবজি স্টক</li>
-                            <li>১/২ চা-চামচ আদা ও রসুন বাটা</li>
-                            <li>১/৪ চা-চামচ লবণ (কম লবণ দিন)</li>
-                            <li>সামান্য গোলমরিচ গুঁড়ো</li>
-                        </ul>
-                        <p><strong>রান্নার পদ্ধতি:</strong> প্যানে তেল গরম করে আদা-রসুন হালকা ভেজে নিন, মাশরুম যোগ করে নেড়ে নরম করুন, তারপর পানি দিয়ে সিদ্ধ করুন, লবণ ও গোলমরিচ দিয়ে পরিবেশন করুন।</p>
-                    </div>
-                </div>
-            
-                <div class="recipe-box">
-                    <h3>২. ভাপে রান্না করা ওয়েস্টার মাশরুম
-                        <button class="toggle-button" onclick="toggleRecipe('recipe2')">রান্নার পদ্ধতি</button>
-                    </h3>
-                    <div class="recipe-content" id="recipe2">
-                        <ul>
-                            <li>১ কাপ ওয়েস্টার মাশরুম</li>
-                            <li>১ চা-চামচ অলিভ অয়েল</li>
-                            <li>১/২ চা-চামচ গোলমরিচ গুঁড়া</li>
-                            <li>১ চিমটি লবণ</li>
-                            <li>১ চিমটি হলুদ গুঁড়া</li>
-                        </ul>
-                        <p><strong>রান্নার পদ্ধতি:</strong> মাশরুমগুলো ধুয়ে পাতলা করে কেটে, স্টিমারে ভাপে রান্না করুন, তারপর লবণ ও গোলমরিচ দিয়ে পরিবেশন করুন।</p>
-                    </div>
-                </div>
-            
-                <div class="recipe-box">
-                    <h3>৩. ওয়েস্টার মাশরুম সালাদ
-                        <button class="toggle-button" onclick="toggleRecipe('recipe3')">রান্নার পদ্ধতি</button>
-                    </h3>
-                    <div class="recipe-content" id="recipe3">
-                        <ul>
-                            <li>১ কাপ সিদ্ধ ওয়েস্টার মাশরুম</li>
-                            <li>১/২ কাপ শসা ও গাজর কুচি</li>
-                            <li>১ টেবিলচামচ লেবুর রস</li>
-                            <li>১ চিমটি বিট লবণ</li>
-                            <li>১ চা-চামচ অলিভ অয়েল</li>
-                            <li>১/২ চা-চামচ কালো গোলমরিচ গুঁড়া</li>
-                        </ul>
-                        <p><strong>রান্নার পদ্ধতি:</strong> সিদ্ধ মাশরুম, শসা, গাজর মিশিয়ে লেবুর রস, অলিভ অয়েল, লবণ ও গোলমরিচ দিয়ে মেশান, তারপর ১০ মিনিট রেখে পরিবেশন করুন।</p>
-                    </div>
-                </div>
-            
-                <div class="recipe-box">
-                    <h3>৪. ওয়েস্টার মাশরুম ভাজি
-                        <button class="toggle-button" onclick="toggleRecipe('recipe4')">রান্নার পদ্ধতি</button>
-                    </h3>
-                    <div class="recipe-content" id="recipe4">
-                        <ul>
-                            <li>১ কাপ ওয়েস্টার মাশরুম (পাতলা করে কাটা)</li>
-                            <li>১ চা-চামচ সরিষার তেল বা অলিভ অয়েল</li>
-                            <li>১/২ চা-চামচ হলুদ গুঁড়া</li>
-                            <li>১/২ চা-চামচ ধনে গুঁড়া</li>
-                            <li>১ চিমটি লবণ</li>
-                            <li>১/২ চা-চামচ কাঁচা মরিচ কুচি</li>
-                        </ul>
-                        <p><strong>রান্নার পদ্ধতি:</strong> প্যানে তেল গরম করে কাঁচা মরিচ দিন, মাশরুম দিয়ে ভাজুন, তারপর হলুদ, ধনে গুঁড়া ও লবণ দিয়ে আরো ভাজুন, এবং গরম গরম পরিবেশন করুন।</p>
-                    </div>
-                </div>
-            </div>
-            
-            
-            
-            
-
-            <div class="order-section">
-                <h2>📦 অর্ডার করুন</h2>
-                <p>Order করতে আমাদের পেজে অথবা WhatsApp-এ যোগাযোগ করুন।</p>
-                <div class="order-links">
-                    <a href="YOUR_PAGE_LINK" target="_blank" class="order-btn">🌐 Mushroom Wonders</a>
-                    <a href="https://wa.me/YOUR_WHATSAPP_NUMBER" target="_blank" class="order-btn">📱 01516567622</a>
-                </div>
-            </div>
-            
-
+  <div class="container">
+    <h2 class="thank-you-heading">
+      Thank you for choosing 
+      <a href="https://www.facebook.com/profile.php?id=61570530083272" target="_blank" class="brand-link">
+        Mushroom Wonders
+      </a>! Your health is our priority.
+    </h2>
+    
+    <div class="storage-section">
+      <h2>সংরক্ষণ পদ্ধতি</h2>
+      <ul>
+        <li>ফ্রিজে সংরক্ষণ (৩-৭ দিন)
+          <button class="toggle-btn" onclick="toggleDetails('method1', this)">বিস্তারিত জানুন</button>
+          <div class="details" id="method1">
+            ✅ মাশরুম ধোয়া যাবে না (ধুলে নরম হয়ে যেতে পারে)।<br>
+            ✅ একটি কাগজের ব্যাগ বা ছিদ্রযুক্ত পলিথিনে রেখে ফ্রিজের নিচের দিকে সংরক্ষণ করুন।<br>
+            ✅ প্লাস্টিকের পাত্র বা সিল করা ব্যাগে রাখবেন না, এতে আর্দ্রতা জমে দ্রুত পচে যেতে পারে।<br>
+            🛑 ভুল করবেন না: পলিথিনে রেখে মুখ বন্ধ করলে ব্যাকটেরিয়া দ্রুত জন্ম নেবে এবং মাশরুম নষ্ট হয়ে যাবে।
+          </div>
+        </li>
+        <li>ফ্রিজ ছাড়া সংরক্ষণ (১-২ দিন)
+          <button class="toggle-btn" onclick="toggleDetails('method2', this)">বিস্তারিত জানুন</button>
+          <div class="details" id="method2">
+            ✅ মাশরুমগুলো ঠাণ্ডা, শুকনো ও বায়ু চলাচলযোগ্য স্থানে রাখুন।<br>
+            ✅ কাপড়ের ব্যাগ বা খোলা ট্রেতে রাখলে ১-২ দিন ভালো থাকবে।<br>
+            ✅ বেশি গরম বা সরাসরি রোদে রাখবেন না।<br>
+            🛑 ভুল করবেন না: প্লাস্টিক বা বেশি বন্ধ জায়গায় রাখলে আর্দ্রতা বেড়ে দ্রুত নষ্ট হবে।
+          </div>
+        </li>
+        <li>ডিপ ফ্রিজে সংরক্ষণ (১-২ মাস)
+          <button class="toggle-btn" onclick="toggleDetails('method3', this)">বিস্তারিত জানুন</button>
+          <div class="details" id="method3">
+            ✅ প্রথমে মাশরুমগুলো হালকা ভাপ (Blanching) দিয়ে নিন (২-৩ মিনিট গরম পানিতে রেখে ঠান্ডা করে নিন)।<br>
+            ✅ তারপর বায়ুরোধী ব্যাগে রেখে ডিপ ফ্রিজে সংরক্ষণ করুন।<br>
+            ✅ ব্যবহার করার আগে স্বাভাবিক তাপমাত্রায় আনুন।<br>
+            🛑 ভুল করবেন না: কাঁচা মাশরুম সরাসরি ডিপ ফ্রিজে রাখলে গুণগত মান নষ্ট হয়ে যাবে।
+          </div>
+        </li>
+        <li>শুকিয়ে সংরক্ষণ (৬ মাস - ১ বছর)
+          <button class="toggle-btn" onclick="toggleDetails('method4', this)">বিস্তারিত জানুন</button>
+          <div class="details" id="method4">
+            ✅ মাশরুম পাতলা করে কেটে রোদে শুকিয়ে নিন বা ওভেনে ৪৫-৫০°C তাপে ৫-৬ ঘণ্টা শুকান।<br>
+            ✅ শুকনো মাশরুম এয়ারটাইট কাঁচের বয়ামে সংরক্ষণ করুন।<br>
+            ✅ পরে রান্নার সময় পানিতে ভিজিয়ে ব্যবহার করতে পারবেন।<br>
+            🛑 ভুল করবেন না: অর্ধেক শুকনো মাশরুম রেখে দিলে পচে যেতে পারে। পুরোপুরি শুকিয়ে নিতে হবে।
+          </div>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="feature-box section">
+      <h2>আমাদের মাশরুমের বিশেষ বৈশিষ্ট্য</h2>
+      <ul class="feature-list">
+        <li>✅ ১০০% অর্গানিক এবং কেমিক্যাল-মুক্ত</li>
+        <li>✅ প্রোটিন এবং ফাইবারে সমৃদ্ধ</li>
+        <li>✅ রোগ প্রতিরোধ ক্ষমতা বাড়ায়</li>
+        <li>✅ ক্যালোরি কম – ওজন নিয়ন্ত্রণে সহায়ক</li>
+      </ul>
+      <button class="toggle-button" onclick="toggleDetails('featureHidden', this)">বিস্তারিত জানুন</button>
+      <div class="hidden-content" id="featureHidden">
+        <ul>
+          <li>✅ হৃদয়বান্ধব এবং কোলেস্টেরল মুক্ত</li>
+          <li>✅ তাজা হার্ভেস্ট করা, সম্পূর্ণ পুষ্টিগুণ সমৃদ্ধ</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h2>মাশরুমে রন্ধন প্রণালী</h2>
+      <ul>
+        <li>🍄 মাশরুমের ভর্তা</li>
+        <li>🍄 মাশরুম ফ্রাই</li>
+        <li>🍄 মাশরুম স্যুপ</li>
+        <li>🍄 চিংড়ি মাশরুম</li>
+        <li>🍄 মাশরুম নুডলস</li>
+      </ul>
+      <p>রান্নার ভিডিও দেখতে আমাদের ফেসবুক পেজে চোখ রাখুন।</p>
+      <div class="link">
+        <a href="https://www.facebook.com/share/1EFK7CzFay/">Mushroom Wonders</a>
+      </div>
+    </div>
+    
+    <div class="recipe-section">
+      <h2>ডায়াবেটিস রোগীদের জন্য ওয়েস্টার মাশরুম রান্নার সহজ ও স্বাস্থ্যকর উপায়</h2>
+      <p>ওয়েস্টার মাশরুম এমনভাবে রান্না করতে হবে, যাতে এটির গুণাগুণ নষ্ট না হয় এবং রক্তে শর্করার ওপর ইতিবাচক প্রভাব ফেলে। নিচে চারটি স্বাস্থ্যকর রান্নার পদ্ধতি দেওয়া হলো—</p>
+      
+      <div class="recipe-box">
+        <h3>১. ওয়েস্টার মাশরুম স্যুপ
+          <button class="toggle-button" onclick="toggleRecipe('recipe1')">রান্নার পদ্ধতি</button>
+        </h3>
+        <div class="recipe-content" id="recipe1">
+          <ul>
+            <li>১ কাপ কুচানো ওয়েস্টার মাশরুম</li>
+            <li>১ চা-চামচ অলিভ অয়েল বা সরিষার তেল</li>
+            <li>১ কাপ পানি বা সবজি স্টক</li>
+            <li>১/২ চা-চামচ আদা ও রসুন বাটা</li>
+            <li>১/৪ চা-চামচ লবণ (কম লবণ দিন)</li>
+            <li>সামান্য গোলমরিচ গুঁড়ো</li>
+          </ul>
+          <p><strong>রান্নার পদ্ধতি:</strong> প্যানে তেল গরম করে আদা-রসুন হালকা ভেজে নিন, মাশরুম যোগ করে নেড়ে নরম করুন, তারপর পানি দিয়ে সিদ্ধ করুন, লবণ ও গোলমরিচ দিয়ে পরিবেশন করুন।</p>
+        </div>
+      </div>
+      
+      <div class="recipe-box">
+        <h3>২. ভাপে রান্না করা ওয়েস্টার মাশরুম
+          <button class="toggle-button" onclick="toggleRecipe('recipe2')">রান্নার পদ্ধতি</button>
+        </h3>
+        <div class="recipe-content" id="recipe2">
+          <ul>
+            <li>১ কাপ ওয়েস্টার মাশরুম</li>
+            <li>১ চা-চামচ অলিভ অয়েল</li>
+            <li>১/২ চা-চামচ গোলমরিচ গুঁড়া</li>
+            <li>১ চিমটি লবণ</li>
+            <li>১ চিমটি হলুদ গুঁড়া</li>
+          </ul>
+          <p><strong>রান্নার পদ্ধতি:</strong> মাশরুমগুলো ধুয়ে পাতলা করে কেটে, স্টিমারে ভাপে রান্না করুন, তারপর লবণ ও গোলমরিচ দিয়ে পরিবেশন করুন।</p>
+        </div>
+      </div>
+      
+      <div class="recipe-box">
+        <h3>৩. ওয়েস্টার মাশরুম সালাদ
+          <button class="toggle-button" onclick="toggleRecipe('recipe3')">রান্নার পদ্ধতি</button>
+        </h3>
+        <div class="recipe-content" id="recipe3">
+          <ul>
+            <li>১ কাপ সিদ্ধ ওয়েস্টার মাশরুম</li>
+            <li>১/২ কাপ শসা ও গাজর কুচি</li>
+            <li>১ টেবিলচামচ লেবুর রস</li>
+            <li>১ চিমটি বিট লবণ</li>
+            <li>১ চা-চামচ অলিভ অয়েল</li>
+            <li>১/২ চা-চামচ কালো গোলমরিচ গুঁড়া</li>
+          </ul>
+          <p><strong>রান্নার পদ্ধতি:</strong> সিদ্ধ মাশরুম, শসা, গাজর মিশিয়ে লেবুর রস, অলিভ অয়েল, লবণ ও গোলমরিচ দিয়ে মেশান, তারপর ১০ মিনিট রেখে পরিবেশন করুন।</p>
+        </div>
+      </div>
+      
+      <div class="recipe-box">
+        <h3>৪. ওয়েস্টার মাশরুম ভাজি
+          <button class="toggle-button" onclick="toggleRecipe('recipe4')">রান্নার পদ্ধতি</button>
+        </h3>
+        <div class="recipe-content" id="recipe4">
+          <ul>
+            <li>১ কাপ ওয়েস্টার মাশরুম (পাতলা করে কাটা)</li>
+            <li>১ চা-চামচ সরিষার তেল বা অলিভ অয়েল</li>
+            <li>১/২ চা-চামচ হলুদ গুঁড়া</li>
+            <li>১/২ চা-চামচ ধনে গুঁড়া</li>
+            <li>১ চিমটি লবণ</li>
+            <li>১/২ চা-চামচ কাঁচা মরিচ কুচি</li>
+          </ul>
+          <p><strong>রান্নার পদ্ধতি:</strong> প্যানে তেল গরম করে কাঁচা মরিচ দিন, মাশরুম দিয়ে ভাজুন, তারপর হলুদ, ধনে গুঁড়া ও লবণ দিয়ে আরো ভাজুন, এবং গরম গরম পরিবেশন করুন।</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="order-section">
+      <h2>📦 অর্ডার করুন</h2>
+      <p>Order করতে আমাদের পেজে অথবা WhatsApp-এ যোগাযোগ করুন।</p>
+      <div class="order-links">
+        <a href="https://www.facebook.com/profile.php?id=61570530083272" target="_blank" class="order-btn">🌐 Mushroom Wonders</a>
+        <a href="https://wa.me/+8801516567622" target="_blank" class="order-btn">📱 01516567622</a>
+      </div>
+    </div>
+    
     <footer>
-        &copy; 2025 Mushroom Wonders. All rights reserved.
+      &copy; 2025 Mushroom Wonders. All rights reserved.
     </footer>
-    
-    <script>
-  function toggleDetails(id, btn) {
-    let details = document.getElementById(id);
-
-    if (details.style.display === "block") {
-        details.style.display = "none";
-        btn.innerText = "বিস্তারিত জানুন";
-    } else {
-        details.style.display = "block";
-        btn.innerText = "কম জানুন";
+  </div>
+  
+  <script>
+    // Toggle for storage section details
+    function toggleDetails(id, btn) {
+      let details = document.getElementById(id);
+      if (details.style.display === "block") {
+          details.style.display = "none";
+          btn.innerText = "বিস্তারিত জানুন";
+      } else {
+          details.style.display = "block";
+          btn.innerText = "কম দেখুন";
+      }
     }
     
-}
-document.addEventListener("DOMContentLoaded", function () {
-    var toggleBtn = document.getElementById("toggleBtn");
-    var hiddenContent = document.getElementById("hiddenContent");
-
-    if (toggleBtn && hiddenContent) {
-        toggleBtn.addEventListener("click", function () {
-            if (hiddenContent.style.display === "none" || hiddenContent.style.display === "") {
-                hiddenContent.style.display = "block";
-                toggleBtn.textContent = "কম দেখুন";
-            } else {
-                hiddenContent.style.display = "none";
-                toggleBtn.textContent = "আরও দেখুন";
-            }
-        });
+    // Toggle for recipe boxes
+    function toggleRecipe(recipeId) {
+      const recipeContent = document.getElementById(recipeId);
+      recipeContent.classList.toggle('active');
     }
-});
-function toggleRecipe(recipeId) {
-    const recipeContent = document.getElementById(recipeId);
-    recipeContent.classList.toggle('active');
-}
-
-
-    </script>
     
+    // Reveal animations on scroll
+    document.addEventListener("DOMContentLoaded", function () {
+      function revealSections() {
+          let sections = document.querySelectorAll(".section");
+          let windowHeight = window.innerHeight;
+          sections.forEach(section => {
+              let sectionTop = section.getBoundingClientRect().top;
+              if (sectionTop < windowHeight - 50) {
+                  section.classList.add("visible");
+              }
+          });
+      }
+      window.addEventListener("scroll", revealSections);
+      revealSections();
+      
+      // Button click animation for recipe content reveal
+      document.querySelectorAll(".toggle-button").forEach(button => {
+          button.addEventListener("click", function () {
+              let content = this.nextElementSibling;
+              content.classList.toggle("active");
+              if (content.classList.contains("active")) {
+                  this.textContent = "কম দেখুন";
+              } else {
+                  this.textContent = "বিস্তারিত জানুন";
+              }
+          });
+      });
+    });
+  </script>
 </body>
 </html>
