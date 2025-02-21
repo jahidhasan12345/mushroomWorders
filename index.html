@@ -40,55 +40,108 @@
     }
 
     /* Storage Section Box */
-    .storage-section {
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      max-width: 850px;
-      margin: 20px auto;
-      border: 1px solid #ddd;
-      text-align: left;
-    }
-    .storage-section h2 {
-      text-align: center;
-      font-size: 1.8rem;
-      margin-bottom: 15px;
-    }
-    .storage-section ul {
-      list-style: none;
-      padding: 0;
-      text-align: left;
-    }
-    .storage-section ul li {
-      background: #f8f9fa;
-      padding: 10px;
-      margin-bottom: 8px;
-      border-radius: 5px;
-      border-left: 4px solid #007bff;
-      font-size: 1rem;
-    }
-    .storage-section .details {
-      display: none;
-      padding: 10px;
-      margin-top: 5px;
-      background: #f9f9f9;
-      text-align: left;
-    }
-    .storage-section .toggle-btn {
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      padding: 8px 16px;
-      font-size: 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      float: right;
-      margin-top: -40px;
-    }
-    .storage-section .toggle-btn:hover {
-      background-color: #0056b3;
-    }
+/* Storage Section Container */
+/* Storage Section Container */
+/* Container for the entire Storage Section */
+/* Container for the entire Storage Section */
+/* Container for the entire Storage Section */
+.storage-section {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 850px;
+  margin: 20px auto;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.storage-section h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+/* List styling */
+.storage-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.storage-section ul li {
+  background: #f8f9fa;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 5px;
+  border-left: 4px solid #007bff;
+  font-size: 1rem;
+}
+
+/* Flex container for text and button */
+.storage-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+/* Text portion */
+.storage-text {
+  flex: 1;
+  margin-right: 10px;
+  font-weight: 500;
+}
+
+/* Toggle button styling */
+.toggle-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 6px 12px; /* Smaller button */
+  font-size: 0.9rem;
+  border-radius: 5px;
+  cursor: pointer;
+  flex-shrink: 0; /* Prevent button from shrinking */
+  transition: background-color 0.3s;
+}
+
+.toggle-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Hidden details always appear as a full block below */
+.details {
+  display: none;
+  background: #f9f9f9;
+  margin-top: 8px;
+  padding: 10px;
+  text-align: left;
+  width: 100%;
+}
+
+/* Responsive fix: on small screens, stack text and button vertically */
+@media (max-width: 600px) {
+  .storage-item {
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap
+  }
+  .storage-text {
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
+  .toggle-btn {
+    align-self: flex-end;
+  }
+}
+
+
+
+
+
+
+
 
     /* Feature Section (Mushroom Features) Box */
     .feature-box {
@@ -341,8 +394,11 @@ body::before {
   opacity: 0.3;
   z-index: -1;
   mix-blend-mode: multiply;
-  filter: blur(4px); /* Adjust blur level as needed */
+  filter: blur(2px); /* Adjust blur level as needed */
 }
+
+
+
 
   </style>
 </head>
@@ -355,47 +411,61 @@ body::before {
       </a>! Your health is our priority.
     </h2>
     
+    <!-- Storage Section -->
     <div class="storage-section">
-      <h2>সংরক্ষণ পদ্ধতি</h2>
-      <ul>
-        <li>ফ্রিজে সংরক্ষণ (৩-৭ দিন)
-          <button class="toggle-btn" onclick="toggleDetails('method1', this)">বিস্তারিত জানুন</button>
-          <div class="details" id="method1">
-            ✅ মাশরুম ধোয়া যাবে না (ধুলে নরম হয়ে যেতে পারে)।<br>
-            ✅ একটি কাগজের ব্যাগ বা ছিদ্রযুক্ত পলিথিনে রেখে ফ্রিজের নিচের দিকে সংরক্ষণ করুন।<br>
-            ✅ প্লাস্টিকের পাত্র বা সিল করা ব্যাগে রাখবেন না, এতে আর্দ্রতা জমে দ্রুত পচে যেতে পারে।<br>
-            🛑 ভুল করবেন না: পলিথিনে রেখে মুখ বন্ধ করলে ব্যাকটেরিয়া দ্রুত জন্ম নেবে এবং মাশরুম নষ্ট হয়ে যাবে।
-          </div>
-        </li>
-        <li>ফ্রিজ ছাড়া সংরক্ষণ (১-২ দিন)
-          <button class="toggle-btn" onclick="toggleDetails('method2', this)">বিস্তারিত জানুন</button>
-          <div class="details" id="method2">
-            ✅ মাশরুমগুলো ঠাণ্ডা, শুকনো ও বায়ু চলাচলযোগ্য স্থানে রাখুন।<br>
-            ✅ কাপড়ের ব্যাগ বা খোলা ট্রেতে রাখলে ১-২ দিন ভালো থাকবে।<br>
-            ✅ বেশি গরম বা সরাসরি রোদে রাখবেন না।<br>
-            🛑 ভুল করবেন না: প্লাস্টিক বা বেশি বন্ধ জায়গায় রাখলে আর্দ্রতা বেড়ে দ্রুত নষ্ট হবে।
-          </div>
-        </li>
-        <li>ডিপ ফ্রিজে সংরক্ষণ (১-২ মাস)
-          <button class="toggle-btn" onclick="toggleDetails('method3', this)">বিস্তারিত জানুন</button>
-          <div class="details" id="method3">
-            ✅ প্রথমে মাশরুমগুলো হালকা ভাপ (Blanching) দিয়ে নিন (২-৩ মিনিট গরম পানিতে রেখে ঠান্ডা করে নিন)।<br>
-            ✅ তারপর বায়ুরোধী ব্যাগে রেখে ডিপ ফ্রিজে সংরক্ষণ করুন।<br>
-            ✅ ব্যবহার করার আগে স্বাভাবিক তাপমাত্রায় আনুন।<br>
-            🛑 ভুল করবেন না: কাঁচা মাশরুম সরাসরি ডিপ ফ্রিজে রাখলে গুণগত মান নষ্ট হয়ে যাবে।
-          </div>
-        </li>
-        <li>শুকিয়ে সংরক্ষণ (৬ মাস - ১ বছর)
-          <button class="toggle-btn" onclick="toggleDetails('method4', this)">বিস্তারিত জানুন</button>
-          <div class="details" id="method4">
-            ✅ মাশরুম পাতলা করে কেটে রোদে শুকিয়ে নিন বা ওভেনে ৪৫-৫০°C তাপে ৫-৬ ঘণ্টা শুকান।<br>
-            ✅ শুকনো মাশরুম এয়ারটাইট কাঁচের বয়ামে সংরক্ষণ করুন।<br>
-            ✅ পরে রান্নার সময় পানিতে ভিজিয়ে ব্যবহার করতে পারবেন।<br>
-            🛑 ভুল করবেন না: অর্ধেক শুকনো মাশরুম রেখে দিলে পচে যেতে পারে। পুরোপুরি শুকিয়ে নিতে হবে।
-          </div>
-        </li>
-      </ul>
-    </div>
+        <h2>সংরক্ষণ পদ্ধতি</h2>
+        <ul>
+          <li>
+            <div class="storage-item">
+              <span class="storage-text">ফ্রিজে সংরক্ষণ (৩-৭ দিন)</span>
+              <button class="toggle-btn" onclick="toggleDetails('method1', this)">বিস্তারিত জানুন</button>
+            </div>
+            <div class="details" id="method1">
+              ✅ মাশরুম ধোয়া যাবে না (ধুলে নরম হয়ে যেতে পারে)।<br>
+              ✅ একটি কাগজের ব্যাগ বা ছিদ্রযুক্ত পলিথিনে রেখে ফ্রিজের নিচের দিকে সংরক্ষণ করুন।<br>
+              ✅ প্লাস্টিকের পাত্র বা সিল করা ব্যাগে রাখবেন না, এতে আর্দ্রতা জমে দ্রুত পচে যেতে পারে।<br>
+              🛑 ভুল করবেন না: পলিথিনে রেখে মুখ বন্ধ করলে ব্যাকটেরিয়া দ্রুত জন্ম নেবে এবং মাশরুম নষ্ট হয়ে যাবে।
+            </div>
+          </li>
+          <li>
+            <div class="storage-item">
+              <span class="storage-text">ফ্রিজ ছাড়া সংরক্ষণ (১-২ দিন)</span>
+              <button class="toggle-btn" onclick="toggleDetails('method2', this)">বিস্তারিত জানুন</button>
+            </div>
+            <div class="details" id="method2">
+              ✅ মাশরুমগুলো ঠাণ্ডা, শুকনো ও বায়ু চলাচলযোগ্য স্থানে রাখুন।<br>
+              ✅ কাপড়ের ব্যাগ বা খোলা ট্রেতে রাখলে ১-২ দিন ভালো থাকবে।<br>
+              ✅ বেশি গরম বা সরাসরি রোদে রাখবেন না।<br>
+              🛑 ভুল করবেন না: প্লাস্টিক বা বেশি বন্ধ জায়গায় রাখলে আর্দ্রতা বেড়ে দ্রুত নষ্ট হবে।
+            </div>
+          </li>
+          <li>
+            <div class="storage-item">
+              <span class="storage-text">ডিপ ফ্রিজে সংরক্ষণ (১-২ মাস)</span>
+              <button class="toggle-btn" onclick="toggleDetails('method3', this)">বিস্তারিত জানুন</button>
+            </div>
+            <div class="details" id="method3">
+              ✅ প্রথমে মাশরুমগুলো হালকা ভাপ (Blanching) দিয়ে নিন (২-৩ মিনিট গরম পানিতে রেখে ঠান্ডা করে নিন)।<br>
+              ✅ তারপর বায়ুরোধী ব্যাগে রেখে ডিপ ফ্রিজে সংরক্ষণ করুন।<br>
+              ✅ ব্যবহার করার আগে স্বাভাবিক তাপমাত্রায় আনুন।<br>
+              🛑 ভুল করবেন না: কাঁচা মাশরুম সরাসরি ডিপ ফ্রিজে রাখলে গুণগত মান নষ্ট হয়ে যাবে।
+            </div>
+          </li>
+          <li>
+            <div class="storage-item">
+              <span class="storage-text">শুকিয়ে সংরক্ষণ (৬ মাস - ১ বছর)</span>
+              <button class="toggle-btn" onclick="toggleDetails('method4', this)">বিস্তারিত জানুন</button>
+            </div>
+            <div class="details" id="method4">
+              ✅ মাশরুম পাতলা করে কেটে রোদে শুকিয়ে নিন বা ওভেনে ৪৫-৫০°C তাপে ৫-৬ ঘণ্টা শুকান।<br>
+              ✅ শুকনো মাশরুম এয়ারটাইট কাঁচের বয়ামে সংরক্ষণ করুন।<br>
+              ✅ পরে রান্নার সময় পানিতে ভিজিয়ে ব্যবহার করতে পারবেন।<br>
+              🛑 ভুল করবেন না: অর্ধেক শুকনো মাশরুম রেখে দিলে পচে যেতে পারে। পুরোপুরি শুকিয়ে নিতে হবে।
+            </div>
+          </li>
+        </ul>
+      </div>
+  
     
     <div class="feature-box section">
       <h2>আমাদের মাশরুমের বিশেষ বৈশিষ্ট্য</h2>
@@ -562,6 +632,42 @@ body::before {
           });
       });
     });
+    function toggleDetails(id, btn) {
+  var details = document.getElementById(id);
+  if (details.style.display === "block") {
+      details.style.display = "none";
+      btn.innerText = "বিস্তারিত জানুন";
+  } else {
+      details.style.display = "block";
+      btn.innerText = "কম দেখুন";
+  }
+}
+
+  function toggleDetails(id, btn) {
+    var details = document.getElementById(id);
+    if (details.style.display === "block") {
+      details.style.display = "none";
+      btn.textContent = "বিস্তারিত জানুন";
+    } else {
+      details.style.display = "block";
+      btn.textContent = "বন্ধ করুন";
+    }
+  }
+
+
   </script>
+  <script>
+    function toggleDetails(id, button) {
+      var details = document.getElementById(id);
+      if (details.style.display === "none" || details.style.display === "") {
+        details.style.display = "block";
+        button.innerText = "সংক্ষিপ্ত করুন";
+      } else {
+        details.style.display = "none";
+        button.innerText = "বিস্তারিত জানুন";
+      }
+    }
+  </script>
+  
 </body>
 </html>
